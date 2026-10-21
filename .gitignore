@@ -16,3 +16,6 @@ Thumbs.db
 
 # Node (if used for asset tooling later)
 /node_modules/
+
+# Hugo build lock
+.hugo_build.lock
