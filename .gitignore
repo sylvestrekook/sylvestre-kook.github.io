@@ -1,0 +1,18 @@
+# Hugo build output
+/public/
+/public_html/
+/resources/
+
+# Hugo debug server
+/hugo_server*
+/nohup.out
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Node (if used for asset tooling later)
+/node_modules/

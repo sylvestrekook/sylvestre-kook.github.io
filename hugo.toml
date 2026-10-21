@@ -1,0 +1,87 @@
+# Sylvestre KOOK — personal site config (Hugo + PaperMod)
+# Finance · Technology · Christianity  |  Professional · Analytical · Faith-driven · Minimalist
+baseURL = "https://sylvestre-kook.github.io/"
+languageCode = "en-au"
+defaultContentLanguage = "en"
+title = "Sylvestre KOOK"
+theme = "PaperMod"
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+enableEmoji = true
+minify.uglify = true
+minify.gohtml = true
+
+# ---- Search (instant, client-side, no backend) ----
+outputs.home = ["HTML", "RSS", "JSON"]
+
+# ---- Taxonomies = the three pillars ----
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+  [markup.highlight]
+    style = "dracula"
+    codeFences = true
+    lineNos = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+
+[permalinks]
+  blog = "/:slug/"
+
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  priority = 0.7
+
+[author]
+  name = "Sylvestre Kook"
+
+[params]
+  env = "production"
+  title = "Sylvestre KOOK"
+  description = "Personal site of Sylvestre Kook — writing on Finance, Technology, and Christianity. Analytical, professional, and faith-driven."
+  keywords = ["Finance", "Technology", "Christianity", "analysis", "personal blog"]
+  author = "Sylvestre Kook"
+  DateFormat = "January 2, 2006"
+  DefaultTheme = "light"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowToc = true
+  TocOpen = false
+  ShowRssButtonInSectionTermList = true
+  images = ["<REDACTED_SECRET>"]
+  [params.homeInfoParams]
+    Title = "Sylvestre KOOK"
+    Content = "Writing on **Finance**, **Technology**, and **Christianity** — analytical, professional, and faith-driven."
+  [params.socialIcons]
+    github = { url = "https://github.com/sylvestre-kook" }
+    email = { url = "mailto:<REDACTED_EMAIL>" }
+  [params.profileMode]
+    enabled = false
+
+# ---- First-class Korean language (Korean audience) ----
+[languages]
+  [languages.en]
+    weight = 1
+    title = "Sylvestre KOOK"
+    [languages.en.params]
+      description = "Personal site of Sylvestre Kook — Finance, Technology, and Christianity."
+  [languages.ko]
+    weight = 2
+    title = "Sylvestre KOOK"
+    languageName = "한국어"
+    baseURL = "https://sylvestre-kook.github.io/ko/"
+    [languages.ko.params]
+      description = "Sylvestre Kook의 개인 사이트 — 금융, 기술, 기독교."

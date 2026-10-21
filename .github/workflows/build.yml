@@ -1,0 +1,55 @@
+# Automatic build + deploy to GitHub Pages on every push to main.
+# Zero manual steps: Hermie writes a markdown file and commits; Pages rebuilds.
+name: build
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive   # fetch PaperMod theme
+          fetch-depth: 0          # needed for lastmod in sitemap
+
+      - name: Setup Hugo (extended)
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.139.4"
+          extended: true
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

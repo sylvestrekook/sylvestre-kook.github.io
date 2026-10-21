@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sylvestre-kook.github.io/sitemap.xml
